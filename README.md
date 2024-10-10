@@ -48,3 +48,31 @@ Após configurar essa parte, é preciso disponinilizar a conexão como um servi�
 
 Com esses passos realizados, a aplicação está pronta para ser utilizado com o banco de dados!
 
+## MODELAGEM E RELACIONAMENTO DE ENTIDADES
+
+Parecido com o Spring o .NET utiliza o padrão MVC como arquitetura de aplicação idetificando em repositórios as entidades, services, dtos e afins, com mudança apenas nos repositories.
+
+### Entidades / Models:
+
+As entidades ficam no diretório chamado Models e sua nomenclatura segue com o nome da classe e sua responsabilidade, ex: **AutorModel**. E é definida com seus atributos principais, esses que serão preenchidos ao instanciar um novo objeto e também com os que serão relacionados posteriormente.
+
+- **AutorModel**:
+
+    - ![alt text](image-3.png)
+
+- **LivroModel**:
+
+    - ![alt text](image-4.png)
+
+
+### Relacionamentos:
+
+De acordo com a arquitetura definida em diagramas, sejam eles ER o de CLASSE, utilizando de exemplo a classes acima o relacionamento foi o seguinte, 1 autor pode ter vários livros e 1 livro pode ter apenas um autor:
+
+- **Autor - 1:N**:
+
+Como o autor poder ter vários livros utiliza-se a Interface **ICollection**, que vai indicar que ele pode receber oma coleção de livros.
+
+- **Livro - 1:1**:
+
+Já o livro pode receber apenas 1 autor, então é instânciado apenas a entidade como tipo de atributo.
